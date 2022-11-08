@@ -5,6 +5,7 @@ import ActiveBtn from "../Assets/circular_active.svg";
 // import DisableBtn from "../Assets/circular_disabled.svg";
 import styled from "styled-components";
 import Container from "./Container";
+import CardBlue from "./CardBlue";
 
 const StylesCarousel = styled.div`
   background: var(--light-blue);
@@ -109,6 +110,76 @@ class Slider extends Component {
     });
   };
 
+  renderCards(cards) {
+    return (
+      <div
+        length={cards.length}
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "25px",
+        }}
+      >
+        {cards ? (
+          cards.map((card, idx) => {
+            return (
+              <div
+                style={{
+                  display: "flex",
+                  "-webkit-box-pack": "start",
+                  justifyContent: "center",
+                  margin: "auto !important",
+                }}
+                className={`item_card ${cards.length === 1 ? "center" : ""}`}
+                key={idx}
+              >
+                <CardBlue card={card} row />
+              </div>
+            );
+          })
+        ) : (
+          <p>no hay "cards" para mostrar</p>
+        )}
+      </div>
+    );
+  }
+  renderVerticalCards(cards) {
+    return (
+      <div
+        className="vertical-card-container"
+        style={{
+          display: "flex",
+          overflowY: "hidden",
+          overflowX: "scroll",
+          width: "100%",
+          justifyContent: "center",
+        }}
+      >
+        {cards ? (
+          cards.map((card, idx) => {
+            return (
+              <div
+                style={{
+                  maxHeight: "522px",
+                  height: "522px",
+                  maxWidth: "306px",
+                  width: "306px",
+                  marginRight: "26px",
+                }}
+                className={`item_card ${cards.length === 1 ? "center" : ""}`}
+                key={idx}
+              >
+                <CardBlue card={card} renderVerticalCard />
+              </div>
+            );
+          })
+        ) : (
+          <p>no hay "cards" para mostrar</p>
+        )}
+      </div>
+    );
+  }
+
   render() {
     return (
       <StylesCarousel
@@ -125,13 +196,18 @@ class Slider extends Component {
           onChange={(e) => this.updateCurrentSlide(e)}
           selectedItem={this.state.currentSlide}
         >
-          {/*this.props.items.map((item, idx) => {
+          {this.props.items.map((item, idx) => {
+            // debugger;
             return (
               <div className="slide" key={idx}>
-                <Container>{this.props.body(item, true)}</Container>
+                <Container>
+                  {this.props.renderVerticalCard
+                    ? this.renderVerticalCards(item, true)
+                    : this.renderCards(item, true)}
+                </Container>
               </div>
             );
-          })alma*/}
+          })}
         </Carousel>
       </StylesCarousel>
     );

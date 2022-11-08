@@ -218,7 +218,7 @@ class Hero extends Component {
             alt="Fondo_mujer"
             className="Fondo_mujer_mid"
           />
-          <div className="hero_container">
+          <div className="hero_container" style={{}}>
             <Container>
               <div className="children">
                 <div className="subchildren">

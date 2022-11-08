@@ -63,6 +63,9 @@ module.exports = {
   resolve: {
     extensions: [".jsx", ".js"],
   },
+  externals: {
+    Config: JSON.stringify(require("./bancoppel_enterprises.json")),
+  },
 };
 
 /*

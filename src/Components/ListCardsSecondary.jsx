@@ -4,20 +4,20 @@ import Card from "./SecondaryCardBlue";
 
 const StyledSencdaryCards = styled.div`
   .item {
-    margin: 10px auto;
+    margin: 10px auto; //FALTA
   }
 
   @media (min-width: 576px) {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; //no
     .item {
       max-width: 50%;
       margin: 0;
       padding: 10px;
       flex: 1;
       display: flex;
-      justify-content: center;
+      justify-content: center; //no
     }
   }
 
@@ -44,15 +44,26 @@ export default function ListCardsSecondary(props) {
   }
 
   return (
-    <StyledSencdaryCards
+    <div style={{
+      display: "flex",
+      flexWrap: "wrap",
+    //  justifyContent: "center"
+    marginLeft: "12.5%"
+      //Falta el nombre de la class
+    }}
       len={getWidth(props.cards.length)}
       wid={getWidthCont(props.cards.length)}
     >
       {props.cards.map((card, idx) => (
-        <div className="item" item={idx} key={idx}>
+        <div className="" item={idx} key={idx} style={{ //Falta el nombre de la class
+          padding: "10px",
+          flex: "0",
+          maxWidth: "100%"
+
+        }}>
           <Card key={idx} card={card} />
         </div>
       ))}
-    </StyledSencdaryCards>
+    </div>
   );
 }

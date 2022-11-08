@@ -48,61 +48,61 @@ const StyledCards = styled.div`
   }
   @media (min-width: 992px) {
     ::-webkit-scrollbar {
-    display: none;
-}
+      display: none;
+    }
     .CardBlue {
-    height: 362px;
-    img{
-      border-radius: 10px;
-    }
-    .copy{
-      padding: 0px;
-      h2{
-        margin-top: 14px;
+      height: 362px;
+      img {
+        border-radius: 10px;
       }
-      p{
-        margin-top: 9px;
+      .copy {
+        padding: 0px;
+        h2 {
+          margin-top: 14px;
+        }
+        p {
+          margin-top: 9px;
+        }
+      }
+      .card_body {
+        button {
+          margin: 0;
+          margin-bottom: 40px !important;
+        }
       }
     }
-    .card_body{
-      button{
-        margin: 0;
-        margin-bottom: 40px !important;
-      }
-    }
-   }
   }
   @media (min-width: 1200px) {
     .CardBlue {
-    .card_body{
-      button{
-        margin-bottom: 40px !important;
+      .card_body {
+        button {
+          margin-bottom: 40px !important;
+        }
       }
     }
-   }
   }
   @media (min-width: 1400px) {
     .CardBlue {
-    max-height: 522px;
-    height: 522px;
-    max-width: 306px;
-    width: 306px; 
-    img{
-      height: 306px;
-    }
-    .copy{
-      padding: 0px;
-      h2{
-        margin-top: 24px;
+      max-height: 522px;
+      height: 522px;
+      max-width: 306px;
+      width: 306px;
+      img {
+        height: 306px;
+      }
+      .copy {
+        padding: 0px;
+        h2 {
+          margin-top: 24px;
+        }
+      }
+      .card_body {
+        button {
+          margin-bottom: 191px !important;
+          margin-left: 46px !important;
+        }
       }
     }
-    .card_body{
-      button{
-        margin-bottom: 191px !important;
-        margin-left: 46px !important;
-      }
-    }
-   }
   }
 `;
 
@@ -190,6 +190,7 @@ class ListaProductos extends Component {
           items={this.state.Productos}
           body={this.bodySlider}
           showHeader={false}
+          renderVerticalCard
         />
       </StyledPructs>
     ) : null;

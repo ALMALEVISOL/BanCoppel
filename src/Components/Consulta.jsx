@@ -91,6 +91,7 @@ export default function Consulta() {
             <Button tercero>Consulta tasas y comisiones</Button>
           </a>
         </div>
+        {/* Cambiar props de este botón */}
       </Container>
     </StyledConsulta>
   );

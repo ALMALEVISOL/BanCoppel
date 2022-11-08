@@ -169,7 +169,7 @@ class EmpresaSide extends Component {
             >
               <AccordionItemButton>
                 Soluciones de crédito
-                {/*this.state.credito ? <Menos /> : <Mas />*/}
+                {this.state.credito ? <Menos /> : <Mas />}
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -226,7 +226,7 @@ class EmpresaSide extends Component {
             >
               <AccordionItemButton>
                 Soluciones Integrales
-                {/*this.state.integrales ? <Menos /> : <Mas />*/}
+                {this.state.integrales ? <Menos /> : <Mas />}
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>

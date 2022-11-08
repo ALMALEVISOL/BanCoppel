@@ -9,14 +9,12 @@ import {
   Switcher,
   Slider,
 } from "../Components";
-
 import styled from "styled-components";
 import Hero_ from "../Assets/Heros/hero_home.jpg";
 import Hero_mid from "../Assets/Heros/hero_home_mid.jpg";
 import Hero_responsive from "../Assets/Heros/hero_home_responsive.jpg";
 import HeroHome from "../Assets/Heros/line1.svg";
 import Catalogo from "../Catalogo_Productos";
-
 import "./Animation.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 const StyledHome = styled.div`
@@ -140,10 +138,9 @@ const subtitle = (
   </p>
 );
 class Home extends Component {
-  constructor() {
-    super();
-    this.renderCards = this.renderCards.bind(this);
-    this.body = this.body.bind(this);
+  constructor(props) {
+    super(props); //escribí props
+    //this.renderCards = this.renderCards.bind(this);
     this.state = {};
   }
 
@@ -174,15 +171,30 @@ class Home extends Component {
     );
   }
 
-  arrayByGroups(data) {
-    var arr = [];
-    for (var i = 0; i < data.length; i += 4) {
-      arr.push(data.slice(i, i + 4));
-    }
-    return arr;
-  }
+  //ADM 20220116 Se sacan estás funciones para que renderize bien en IE 10
+  renderCards = (cards, flag) => {
+    // debugger;
+    return (
+      <StyledCardsSlider length={cards.length}>
+        {cards ? (
+          cards.map((card, idx) => {
+            return (
+              <div
+                className={`item_card ${cards.length === 1 ? "center" : ""}`}
+                key={idx}
+              >
+                <CardBlue card={card} row />
+              </div>
+            );
+          })
+        ) : (
+          <p>no hay "cards" para mostrar</p>
+        )}
+      </StyledCardsSlider>
+    );
+  };
 
-  renderCards(cards) {
+  holaCards(cards) {
     return (
       <StyledCardsSlider length={cards.length}>
         {cards ? (
@@ -204,14 +216,16 @@ class Home extends Component {
   }
 
   bodySlider(data) {
-    const { cards } = data;
-    if (cards) {
-      let arrays = [];
-      for (var i = 0; i < cards.length; i += 4) {
-        arrays.push(cards.slice(i, i + 4));
+    if (!data || !data.section) {
+      return;
+    }
+    const arrays = [];
+    if (data.cards && data.cards.length > 0) {
+      for (var i = 0; i < data.cards.length; i += 4) {
+        arrays.push(data.cards.slice(i, i + 4));
       }
-      //this.arrayByGroups(cards);
-      if (arrays) {
+      if (arrays && arrays.length > 0) {
+        // debugger;
         return (
           <TransitionGroup className="carousel-anim">
             <CSSTransition
@@ -219,7 +233,12 @@ class Home extends Component {
               timeout={500}
               classNames="caritem"
             >
-              <Slider items={arrays} body={this.renderCards} />
+              <Slider
+                items={arrays}
+                bodyAdm={this.renderCards}
+                holaCards={this.holaCards}
+                alex="alex"
+              />
             </CSSTransition>
           </TransitionGroup>
         );
@@ -236,7 +255,7 @@ class Home extends Component {
             name="title"
             content="Banca Empresarial BanCoppel | BanCoppel.com"
           />
-          <link rel="canonical" href="https://www.bancoppel.com/bancoppel" />
+          <link rel="canonical" href="https://www.bancoppel.com/empresas" />
           <meta
             name="keywords"
             content="banca empresarial, bancoppel, banco, empresa, negocio,  cuenta de inversion, cuenta de nomina, credito"
@@ -271,7 +290,7 @@ class Home extends Component {
             responsiveImg={Hero_responsive}
             midImg={Hero_mid}
             banner={HeroHome}
-            path="/contacto"
+            path="/empresas/contacto"
             titleBanner={titleBanner}
             subtitle={subtitle}
           />

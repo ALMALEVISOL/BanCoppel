@@ -22,7 +22,6 @@ import FinanciamientoOrdenesCompra from "./Views/SolucionesIntegrales/Financiami
 import ProyectosInversion from "./Views/SolucionesIntegrales/ProyectosInversion";
 import CreditoAmortizable from "./Views/SolucionesCredito/CreditoAmortizable";
 import Acceso from "./Views/Acceso";
-import { config } from "./config/config";
 
 class App extends Component {
   render() {

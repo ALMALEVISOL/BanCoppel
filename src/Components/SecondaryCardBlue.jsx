@@ -83,19 +83,54 @@ const StyledSecondaryCard = styled.div`
 class SecondaryCardBlue extends Component {
   render() {
     return (
-      <StyledSecondaryCard
+      <div
         className="SecondaryCardBlue"
         hasTitle={this.props.card.title ? true : false}
+        style={{
+          background: "#002a61",
+          borderRadius: "15px",
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          width: "226px",
+          height: "246px",
+        }}
       >
         {this.props.card.image ? (
-          <img src={this.props.card.image} alt="" />
+          <img
+          style={{
+            width: "66px",
+            height: "66",
+            marginTop: "24px"
+          }}
+           src={this.props.card.image} alt="" />
         ) : null}
 
-        <div className="body_secondary">
-          {this.props.card.title ? <h2>{this.props.card.title}</h2> : null}
-          {this.props.card.copy ? <p>{this.props.card.copy}</p> : null}
+        <div className="" style={{
+           display: "flex",
+           flexDirection: "column",
+           alignItems: "center",
+           padding: "10px",
+           textAlign: "center",
+        }}>
+          {this.props.card.title ? <h2 style={{
+            fontFamily: "futura_heavy",
+            fontStyle: "normal",
+            fontWeight: "bold",
+            fontSize: "18px",
+            lineHeight: "110%",
+            color: "#81c1ea",
+            marginBottom: "9px",
+            marginTop: "12px",
+          }}>{this.props.card.title}</h2> : null}
+          {this.props.card.copy ? <p style={{
+            fontFamily: "futura_book",
+            fontSize: "14px",
+            lineHeight: "120%",
+            color: "#f4f6f9",
+          }}>{this.props.card.copy}</p> : null}
         </div>
-      </StyledSecondaryCard>
+      </div>
     );
   }
 }

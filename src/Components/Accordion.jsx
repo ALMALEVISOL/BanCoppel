@@ -8,7 +8,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-//import AddIcon from "../Assets/AddIcon.svg";
+import AddIcon from "../Assets/AddIcon.svg";
 import restIcon from "../Assets/rest_icon.svg";
 
 const AccordionCoppel = ({ items, body }) => {
@@ -22,22 +22,32 @@ const AccordionCoppel = ({ items, body }) => {
   }
 
   return (
+    <div className="styled-accordion" style={{
+      background: "var(--light-blue)",
+      padding: "25px 0"
+    }} >
     <Container>
       <Accordion allowZeroExpanded={true}>
         {items.map((item, idx) => {
           return (
+           <div className="second-styled-accordion" key={idx} arr={items} id={idx}
+           styled={{
+            paddingBottom: "10px",
+
+           }}>
             <AccordionItem>
               <AccordionItemHeading
                 className="heading"
                 onClick={(e) => chanState(idx)}
               >
-                <AccordionItemButton
+                <AccordionItemButton 
+                style={{borderBottom: items.length - 1 === idx ? "0" : "1px solid var(--shadow-blue)",}}
                   className={`accordion-header ${
                     state === idx ? "active" : ""
                   }`}
                 >
                   <p>{item.section}</p>
-                  {/* <img src={state === idx ? restIcon : AddIcon} alt="" />*/}
+                  <img src={state === idx ? restIcon : AddIcon} alt="" />
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel className="accordion-body">
@@ -48,11 +58,17 @@ const AccordionCoppel = ({ items, body }) => {
                     )}
               </AccordionItemPanel>
             </AccordionItem>
+            </div>
           );
         })}
       </Accordion>
     </Container>
+    </div>
   );
 };
 
 export default AccordionCoppel;
+
+
+
+//DIFERENTE

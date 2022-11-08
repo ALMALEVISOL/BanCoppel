@@ -1,0 +1,102 @@
+:root {
+  --storm-blue: #225aa7;
+  --night-blue: #002a61;
+  --blue: #36679a;
+
+  --sky-blue: #338cbf;
+  --morning-blue: #81c1ea;
+  --yellow: #fcda47;
+  --summer-yellow: #ffbe12;
+  --light-blue: #f4f6f9;
+  --shadow-blue: #dae0e9;
+  --red: #f3685f;
+  --green: #39c6ac;
+  --white: #ffffff;
+  --gray: #636363;
+  --light-gray: #aaaaaa;
+}
+
+.section {
+  padding: 20px;
+  border-bottom: 2px solid var(--shadow-blue);
+  cursor: pointer;
+}
+.section h3 {
+  width: 100%;
+  max-width: 241px;
+  font-family: futura_heavy;
+  text-align: center;
+  color: #aaaaaa;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.section .current {
+  border-bottom: 2px solid #fcda47 !important;
+}
+.section .current h3 {
+  text-align: "center";
+  color: "rgb(0, 42, 97)";
+  width: "100%";
+  max-width: "241px";
+  font-family: "futura_heavy";
+}
+
+.hero_container {
+  left: 0 !important;
+}
+
+/* BOTÓN NAVBAR, ACCESO Y PERSONAS */
+.second-styled-accordion:last-child {
+  padding-bottom: 0;
+}
+.active {
+  border-bottom: 0px solid #dae0e9 !important;
+}
+/* //duda */
+
+.accordion-header {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordion-header img {
+  width: 30px;
+  height: 30px;
+}
+.accordion-header p {
+  color: var(--night-blue);
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 350%;
+  font-family: futura_normal;
+}
+.ham-item {
+  width: 100%;
+  height: 2px;
+  background: var(--storm-blue) !important;
+  border-radius: 10px;
+  padding: 1px;
+}
+.ham-item center {
+  width: 70%;
+}
+@media (min-width: 576px) {
+  .BancoppelBtn {
+    height: 50px;
+    width: 120px;
+  }
+}
+
+@media (min-width: 992px) {
+  .BancoppelBtn {
+    width: 150px;
+  }
+  .styled-accordion {
+    display: none;
+  }
+  .hamburger {
+    margin-right: 23px;
+  }
+}

@@ -64,7 +64,7 @@ const StyledSwitch = styled.div`
   @media (min-width: 1400px) {
     padding-bottom: 82px;
     display: block;
-    .sections{
+    .sections {
       margin-bottom: 60px;
     }
   }
@@ -119,7 +119,7 @@ class Switcher extends Component {
                   }`}
                   onClick={() => this.selectedView(item)}
                 >
-                  <h3>{item.section}</h3>
+                  <h3 style={{}}>{item.section}</h3>
                 </div>
               );
             })}

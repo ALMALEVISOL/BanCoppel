@@ -103,7 +103,7 @@ const StyledBigCard = styled.div`
         max-width: 362px !important;
         img {
           width: 100% !important;
-          max-width: 362px;
+          /* max-width: 362px; */
           /* height: 215px !important; */
         }
         .card_body{
@@ -121,9 +121,9 @@ const StyledBigCard = styled.div`
     .card {
       padding-left: 0px;
       .CardBlue {
-        min-width: 431px !important;
-        max-width: 431px !important;
-        height: 398px !important;
+        /* min-width: 431px !important;
+        max-width: 431px !important; */
+        /* height: 398px !important; */
         img {
           width: 100% !important;
           max-width: 431px;
@@ -157,18 +157,45 @@ class CardBullets extends Component {
   }
   render() {
     return (
-      <StyledBigCard>
+      <div style={{
+        display: "flex",
+        flexDirection: "row"
+      }}>
         <div className="card">
           <CardBlue card={this.props.data.card} secondary />
         </div>
         <div
           className={`bullets ${this.ClassNameByArrLen(this.props.data.items)}`}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+
+          }}
         >
           {this.props.data.items.map((item, idx) => {
             return (
-              <div className="bullet" key={idx}>
-                <img src={item.icon} alt="item.icon" />
-                <p>
+              <div className="bullet" key={idx} style={{
+                display: "flex", 
+                flexDirection: "row", 
+                marginLeft: "55px", 
+                marginBottom:"50px",
+                fontFamily: "futura",
+                fontSize: "16px",
+                color: "#282828",
+                lineHeight: "110%",
+                }}>
+
+                <img style={{
+                  marginRight: "18px",
+                  width: "40px",
+                  height: "40px",
+                }} src={item.icon} alt="item.icon" />
+                <p style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  maxWidth: "230px"
+                }}>
                   {item.bullet ? <span>{item.bullet} </span> : ""}
                   {item.copy}
                 </p>
@@ -176,7 +203,7 @@ class CardBullets extends Component {
             );
           })}
         </div>
-      </StyledBigCard>
+      </div>
     );
   }
 }

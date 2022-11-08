@@ -1,4 +1,4 @@
-import "core-js";
+import "core-js"; //diferente
 import React, { Component } from "react";
 import styled from "styled-components";
 import { InputBancoppel, BancoppelBtn } from ".";

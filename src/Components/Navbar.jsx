@@ -6,13 +6,14 @@ import SideDrawer from "./SideDrawer";
 import AccesoForm from "./AccesoForm";
 import Logo from "../Assets/logo_bancoppel_letras_azules.svg";
 import SecondaryNav from "./SecondaryNav";
+import { globalColors } from "../config/config";
 
 const StyledNavbar = styled.div`
-  background: var(--white);
+  background: ${globalColors["--white"]};
   padding: 16px;
   padding-top: 35px;
 
-  border-bottom: 2px solid var(--shadow-blue);
+  border-bottom: 2px solid ${globalColors["--shadow-blue"]};
   .nav_container {
     display: flex;
     align-items: center;
@@ -31,8 +32,8 @@ const StyledNavbar = styled.div`
           height: 26px;
         }
       }
-
-      .hamburger {
+       /* DESCOMENTAR EN CASO DE NO USAR CssExplorer.css */
+      /* .hamburger {
         cursor: pointer;
         width: 24px;
         height: 20px;
@@ -44,14 +45,14 @@ const StyledNavbar = styled.div`
         .ham-item {
           width: 100%;
           height: 2px;
-          background: var(--storm-blue);
+          background: ${globalColors["--storm-blue"]};
           border-radius: 10px;
           padding: 1px;
         }
         .center {
           width: 70%;
         }
-      }
+      } */
       img {
         max-width: 95%;
       }
@@ -92,10 +93,10 @@ const StyledNavbar = styled.div`
     }
   }
 `;
-// const openInNewTab = (url) => {
-//   const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
-//   if (newWindow) newWindow.opener = null
-// }
+const openInNewTab = (url) => {
+  const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+  if (newWindow) newWindow.opener = null
+}
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -103,6 +104,8 @@ class Navbar extends Component {
   }
 
   render() {
+    // debugger;
+    console.log(globalColors);
     return (
       <>
         <StyledNavbar className="bancoppel_nav">
@@ -111,7 +114,20 @@ class Navbar extends Component {
               <div
                 className="hamburger"
                 onClick={() => this.setState({ onOpen: true })}
+                style={{
+                  cursor: "pointer",
+                  width: "24px",
+                  height: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  justifyContent: "space-around",
+                  marginRight: "32px",
+
+                }}
               >
+          
+          
                 <div className="ham-item"></div>
                 <div className="ham-item center"></div>
                 <div className="ham-item"></div>
@@ -129,21 +145,18 @@ class Navbar extends Component {
               >
                 <BancoppelBtn>Personas</BancoppelBtn>
               </a>
+              <a
+                onClick={() => openInNewTab("https://bancoppel.com/empresas/index.html")}
+                target="_blank"
+                rel="noreferrer"
+                className="navigation-item"
+              >
+                <BancoppelBtn>Acceso</BancoppelBtn>
+              </a>
               {/* <NavLink to="/bancoppel" className="navigation-item">
                 <BancoppelBtn>Empresas</BancoppelBtn>
               </NavLink> */}
-              <NavLink to="/login">
-                {/* <a href="https://dodobypaco.com/prueba/login_empresas.html"> */}
-                <BancoppelBtn
-                  secundario
-                  // onClick={() => openInNewTab("https://bancoppel.com/bancoppel/index.html")}
-                  // onClick={() =>
-                  //   this.setState({ openAcceso: !this.state.openAcceso })
-                  // }
-                >
-                  Acceso
-                </BancoppelBtn>
-              </NavLink>
+
               {/* </a> */}
               {this.state.openAcceso ? (
                 <AccesoForm setState={this.setState.bind(this)} />
